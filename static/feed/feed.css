@@ -1,0 +1,36 @@
+article a:link, ol a:link{
+    text-decoration: none;color: #0dca91;
+}
+article a:visited, ol a:visited{
+    text-decoration: none;color: #0dca91;
+}
+
+iframe{
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+    height : 338px;
+}
+.dbimg{
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    height : auto;
+}
+
+@media(max-width:1000px){
+
+
+    iframe{
+      display: block;
+      margin: 0 auto;
+      width: 337px;
+      height : 190px;
+    }
+    .dbimg{
+        display: block;
+        margin: 0 auto;
+        width: 337px;
+        height : auto;
+    }
+}

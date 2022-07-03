@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_block %}
+<title>Feed</title>
+<link rel="stylesheet" href="{% static 'feed/feed.css' %}">
+{% endblock head_block %}
+
+
+{% block body_block %}
+<div class="container mt-5">
+    <div class="row text-light">
+        <div class="col-md-8 mt-5">
+
+                <article class="blog-post">
+                    <h2 class="blog-post-title text-warning">{{post.post_title}} | post #{{post.post_id}}</h2>
+                    <p class="blog-post-meta">{{post.creation_date}} by <a href="{{post.auth_link}}" target="_blank">{{post.post_auth}}</a></p>
+                    {% if post.github_link %}<p>Source Code: <a href="{{post.github_link}}" target="_blank">GitHub Link</a></p>{% endif %}
+
+
+                    <p>{{post.post_desc}}</p>
+                    {% if post.post_video %}
+                    <iframe width="480" height="270" src="{{post.post_video}}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                    {% endif %}
+
+                    {% if post.post_image %}
+                    <img class="dbimg" src={{post.post_image.url}}>
+                    {% endif %}
+
+                    <hr>
+                </article><!-- /.blog-post -->
+
+
+
+            <nav class="blog-pagination" aria-label="Pagination">
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-warning" href="?page={{ page_obj.previous_page_number }}">Older</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-warning" href="?page={{ page_obj.next_page_number }}">Newer</a>
+            {% endif %}
+            </nav>
+
+        </div>
+
+        <div class="col-md-4 mt-5">
+            <div class="p-4 mb-3 bg-light rounded text-dark">
+                <h4 class="font-italic">About</h4>
+                <p class="mb-0">Hi I am Ishaan, this is my blog/feed page. This website is created using django framework.</p>
+            </div>
+
+            <div class="p-4">
+                <h4 class="font-italic text-warning">Other Links</h4>
+                <ol class="list-unstyled mb-0">
+                    <li><a href="https://www.youtube.com/watch?v=JxzZxdht-XY&t=3057s" target="_blank">Django Tutorial In Hindi</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc&t=1592s" target="_blank">Python for Beginners [Full Course]</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc" target="_blank">Python OOP: Classes and Instances</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=vmEHCJofslg&t=3029s" target="_blank">Python Pandas</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=yfoY53QXEnI" target="_blank">CSS Crash Course</a></li>
+
+                </ol>
+            </div>
+
+            <div class="p-4">
+                <h4 class="font-italic text-warning">FollowMe</h4>
+                <ol class="list-unstyled">
+                    <li><a href="https://github.com/ishaansharma7" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.instagram.com/ishaansharma711/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCLHCqt98yc2vWlU_iZtdAWA" target="_blank">YouTube</a></li>
+                    <li><a href="https://www.linkedin.com/in/ishaan-sharma-245b051a1/" target="_blank">Linkedin</a></li>
+                </ol>
+            </div>
+        </div>
+
+    </div><!-- /.row -->
+</div>
+{% endblock body_block %}
